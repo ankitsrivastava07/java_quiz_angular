@@ -1,0 +1,9 @@
+<header-component></header-component>
+ <div *ngIf="(loadingService.isLoading|async)" class="spinnerconent" >
+        <div class="spinnerclass">
+            <mat-spinner/>
+        </div>
+    </div>
+
+<router-outlet></router-outlet>
+<footer-component></footer-component>

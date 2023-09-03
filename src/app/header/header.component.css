@@ -1,0 +1,25 @@
+#header {
+    background-color: #563d7c;
+}
+
+.bd-navbar {
+    color: #cbbde2;
+}
+#navbarRight{
+    float: right;
+}
+.dropdown-menu{
+    margin-top: 10px;
+    width: 239px;
+    text-align: center;
+    padding: 1px;
+   
+}
+.dropdown-item{
+    padding: 10px;
+    
+        border: 0;
+        clear:both;
+        display:block;
+      
+}
