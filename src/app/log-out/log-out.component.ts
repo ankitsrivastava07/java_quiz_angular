@@ -16,7 +16,9 @@ export class LogOutComponent {
   UserLogOut() {
     this.apiService.userLogOut().subscribe(data => {
       console.log(data)
+      sessionStorage.setItem('isLogin', 'NO')
       window.location.href = window.location.href;
+
     });
   }
 }

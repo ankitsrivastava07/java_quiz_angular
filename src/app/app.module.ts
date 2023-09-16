@@ -15,6 +15,7 @@ import { RequestInterceptorService } from './request-interceptor.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LogOutComponent } from './log-out/log-out.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     SignInComponent,
     NotFoundComponent,
     LogOutComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserDashboardComponent
   ],
   imports: [
     HttpClientModule,

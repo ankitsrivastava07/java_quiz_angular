@@ -10,11 +10,15 @@ export class HeaderComponent {
   userName = ''
 
   constructor(private apiService: ApiService) {
-    if (window.location.pathname !== '/signIn' && (sessionStorage.getItem('Token') !== null) && window.location.pathname !== '/signUp') {
+   
+    if ((sessionStorage.getItem('isLogin')!== null && sessionStorage.getItem('isLogin') === 'YES')) {
       this.apiService.getLoginedUserName().subscribe(data => {
         this.userName = data.data.firstName;
         console.log('Logined Username ' + data.data.firstName)
       })
+    }
+    else{
+      this.userName = ''
     }
   }
 }

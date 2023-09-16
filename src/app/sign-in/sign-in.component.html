@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
+	<title>Login 01</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 </head>
 
 <body>
@@ -18,22 +18,32 @@
 				</div>
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-md-6 col-lg-5">
+				<div class="col-md-7 col-lg-5">
 					<div class="login-wrap p-4 p-md-5">
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="fa fa-user-o"></span>
 						</div>
-						<div *ngIf=isValidCrds class="alert alert-danger" role="alert">
-							{{errMsg}}
+						<h3 class="text-center mb-4">Sign In</h3>
+
+						<div *ngIf="responseMsg!=''" class="alert alert-danger text-center" role="alert">
+							{{responseMsg}}
 						</div>
+
 						<form (ngSubmit)="loginFormApi(loginForm.value)" #loginForm="ngForm" class="login-form">
 							<div class="form-group">
-								<input type="text" class="form-control rounded-left" placeholder="Enter Email" ngModel
-									name="email" required>
+								<input type="email" class="form-control rounded-left" name="email"
+									placeholder="Please enter email" #email="ngModel" ngModel required>
+								<label class="emsg" *ngIf="email.invalid && email.touched">Please enter email</label>
 							</div>
-							<div class="form-group d-flex">
-								<input type="password" class="form-control rounded-left" placeholder="Enter Password"
-									ngModel name="password" required>
+							<div class="form-group">
+								<input type="password" class="form-control rounded-left" name="password" ngModel
+									placeholder="Please enter password" #password="ngModel" required>
+								<label class="emsg" *ngIf="password.invalid && password.touched">Please enter
+									password</label>
+							</div>
+							<div class="form-group">
+								<button type="submit" [disabled]="loginForm.invalid"
+									class="form-control btn btn-primary rounded submit px-3">Login</button>
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50">
@@ -45,10 +55,6 @@
 								<div class="w-50 text-md-right">
 									<a href="#">Forgot Password</a>
 								</div>
-							</div>
-							<a href="/signup" class="text-center mb-4">Sign Up</a>
-							<div class="form-group">
-								<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Sign In</button>
 							</div>
 						</form>
 					</div>

@@ -1,4 +1,4 @@
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, finalize } from 'rxjs';
@@ -14,9 +14,8 @@ export class RequestInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     this.loadingService.isLoading.next(true);
-
     const authReq = req.clone({
-      headers: req.headers.set('Token', '' + sessionStorage.getItem('Token'))
+      headers: req.headers.set('Token', '' + sessionStorage.getItem('Token')) 
     });
 
     return next.handle(authReq)
@@ -31,6 +30,7 @@ export class RequestInterceptorService implements HttpInterceptor {
           if (err instanceof HttpErrorResponse) {
             if (err.status === 401) {
               console.log('Unauthorized error');
+              sessionStorage.setItem('isLogin', 'NO')
               this.route.navigate(['/signIn'])
             }
 

@@ -1,50 +1,74 @@
 <form class="form-horizontal">
     <fieldset>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="fname">First Name</label>  
-      <div class="col-md-4">
-      <input id="fname" name="fname" type="text" placeholder="{{userDetail.firstName}}" class="form-control input-md" required="">
+
+        <div class="form-group" ng-init="varname='images/unamed.gif'">
+            <div class="col-md-4">
+                <img [src]="imgSrc" id="avatar" class="circular_image" alt="Avatar" />
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <div class="col-md-4">
+                <label for="file-upload" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> {{uploadedFileName}}
+                  </label>
+                <input type="file" id="file-upload" (change)="createFilePath($event)" style="display: none;">
+            </div>
+            <span *ngIf="!data.status" class="emsg">{{data.msg}}</span>
+        </div>
         
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="lname">Last Name</label>  
-      <div class="col-md-4">
-      <input id="lname" name="lname" type="text" placeholder="{{userDetail.lastName}}" class="form-control input-md" required="">
-        
-      </div>
-    </div>
-    
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="email">Email</label>  
-      <div class="col-md-4">
-      <input id="email" name="email" type="text" placeholder="{{userDetail.email}}" class="form-control input-md"
-       required="">
-        
-      </div>
-    </div>
-    
-    <!-- Password input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="password">Role</label>
-      <div class="col-md-4">
-        <input id="password" name="password" type="password" placeholder="{{userDetail.role}}" class="form-control input-md" required="">
-        
-      </div>
-    </div>
-    
-    <!-- Button (Double) -->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="save"></label>
-      <div class="col-md-8">
-        <button id="save" name="save" class="btn btn-success">Update Profile</button>
-      </div>
-    </div>
-    
+        <!-- Text input-->
+        <div class="form-group">
+            <div class="col-md-4">
+                <button (click)="downLoadFile()">DownLoad</button>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="fname">First Name</label>
+            <div class="col-md-4">
+                <input id="fname" name="fname" type="text" placeholder="{{userDetail.firstName}}"
+                    class="form-control input-md" required="" value="{{userDetail.firstName}}">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="lname">Last Name</label>
+            <div class="col-md-4">
+                <input id="lname" name="lname" type="text" placeholder="{{userDetail.lastName}}"
+                    class="form-control input-md" required="" value="{{userDetail.lastName}}">
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="email">Email</label>
+            <div class="col-md-4">
+                <input id="email" name="email" type="text" placeholder="{{userDetail.email}}"
+                    class="form-control input-md" required="" value="{{userDetail.email}}">
+
+            </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="password">Role</label>
+            <div class="col-md-4">
+                <input id="password" name="password" type="password" placeholder="{{userDetail.role}}"
+                    class="form-control input-md" required="" disabled>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="save"></label>
+            <div class="col-md-8">
+                <button id="save" name="save" class="btn btn-success">Update Profile</button>
+            </div>
+        </div>
+
     </fieldset>
-    </form>
+</form>

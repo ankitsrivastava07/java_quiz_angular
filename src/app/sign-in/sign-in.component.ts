@@ -12,14 +12,14 @@ export class SignInComponent {
   isValidCrds = false
   errMsg = ''
   apiResponse: any
+  responseMsg:string = ''
 
   constructor(private apiService: ApiService, private router: Router) { }
 
   loginFormApi(loginFormData: any) {
-    this.isValidCrds = false
+    this.responseMsg = ''
     this.apiService.userLogin(loginFormData).subscribe(data => {
-      this.isValidCrds = true
-      this.errMsg = data.msg
+      this.responseMsg = data.msg
       this.apiResponse = data;
       console.log(data)
 
@@ -27,7 +27,7 @@ export class SignInComponent {
         window.sessionStorage.setItem('Token', this.apiResponse.data.sessionToken)
         sessionStorage.setItem('userName', this.apiResponse.data.userName)
         sessionStorage.setItem('userId', data.data.userId)
-
+        sessionStorage.setItem('isLogin', 'YES')
         this.router.navigate([''])
           .then(() => {
             window.location.reload();
